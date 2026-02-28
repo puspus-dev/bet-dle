@@ -6,7 +6,7 @@ let maxAttempts = 6;
 
 const todayKey = new Date().toISOString().slice(0,10);
 
-fetch("words.txt")
+fetch("magyar-szavak.txt")
   .then(res => res.text())
   .then(text => {
     words = text.split("\n")
