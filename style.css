@@ -1,33 +1,64 @@
 body {
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   text-align: center;
   background: #121213;
   color: white;
+  margin: 0;
+}
+
+h1 {
+  margin: 20px 0;
 }
 
 #game {
-  margin: 20px auto;
-  width: 260px;
+  display: grid;
+  gap: 5px;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 .row {
   display: flex;
-  justify-content: center;
-  margin-bottom: 5px;
+  gap: 5px;
 }
 
 .cell {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border: 2px solid #3a3a3c;
-  margin: 2px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
   font-weight: bold;
+  font-size: 18px;
+  text-transform: uppercase;
 }
 
 .correct { background: #538d4e; }
 .present { background: #b59f3b; }
 .absent { background: #3a3a3c; }
+
+#keyboard {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px;
+}
+
+.keyrow {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.key {
+  padding: 10px;
+  background: #818384;
+  border-radius: 4px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.key.wide {
+  padding: 10px 15px;
+}
