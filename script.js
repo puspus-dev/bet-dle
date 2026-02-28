@@ -106,7 +106,9 @@ function submitGuess() {
   if (finished) return;
   if (currentGuess.length !== target.length) return;
 
+  console.log("submitting guess", currentGuess, "target", target);
   guesses.push(currentGuess);
+  console.log("guesses array now", guesses);
   saveGame();
 
   if (currentGuess === target) {
@@ -124,6 +126,7 @@ function submitGuess() {
 
   currentGuess = "";
   render();
+  console.log("after render, guesses", guesses);
 }
 
 function render() {
@@ -222,14 +225,18 @@ function shareResult() {
 }
 // reset the game state and pick a new word (randomly) so the player can start over
 function restartGame() {
+  if (words.length === 0) {
+    alert("Szavak még nem töltöttek be!");
+    return;
+  }
+
   // clear any saved progress for today
   localStorage.removeItem(storageKey);
 
   // choose a new word at random (not tied to the daily index)
-  if (words.length > 0) {
-    target = words[Math.floor(Math.random() * words.length)];
-  }
+  target = words[Math.floor(Math.random() * words.length)];
 
+  // reset all game state
   currentGuess = "";
   guesses = [];
   finished = false;
@@ -240,6 +247,9 @@ function restartGame() {
   render();
   updateStats();
   document.getElementById("shareBtn").style.display = "none";
+
+  // blur any focused element (e.g. the restart button) so Enter won't trigger it
+  if (document.activeElement) document.activeElement.blur();
 }
 document.addEventListener("keydown", (e) => {
   if (e.key === "Enter") submitGuess();
