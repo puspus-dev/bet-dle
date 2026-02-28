@@ -220,7 +220,27 @@ function shareResult() {
   navigator.clipboard.writeText(text);
   alert("Eredmény másolva!");
 }
+// reset the game state and pick a new word (randomly) so the player can start over
+function restartGame() {
+  // clear any saved progress for today
+  localStorage.removeItem(storageKey);
 
+  // choose a new word at random (not tied to the daily index)
+  if (words.length > 0) {
+    target = words[Math.floor(Math.random() * words.length)];
+  }
+
+  currentGuess = "";
+  guesses = [];
+  finished = false;
+
+  // rebuild the board and keyboard, hide share button
+  createGrid();
+  createKeyboard();
+  render();
+  updateStats();
+  document.getElementById("shareBtn").style.display = "none";
+}
 document.addEventListener("keydown", (e) => {
   if (e.key === "Enter") submitGuess();
   else if (e.key === "Backspace") deleteLetter();
