@@ -7,7 +7,19 @@ body {
 }
 
 h1 {
-  margin: 20px 0;
+  margin: 20px 0 5px 0;
+  font-size: 36px;
+  letter-spacing: 3px;
+}
+
+.subtitle {
+  opacity: 0.7;
+  margin-bottom: 15px;
+}
+
+#stats {
+  margin-bottom: 10px;
+  font-size: 14px;
 }
 
 #game {
@@ -23,8 +35,8 @@ h1 {
 }
 
 .cell {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   border: 2px solid #3a3a3c;
   display: flex;
   align-items: center;
@@ -41,14 +53,14 @@ h1 {
 #keyboard {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 6px;
   padding: 10px;
 }
 
 .keyrow {
   display: flex;
   justify-content: center;
-  gap: 5px;
+  gap: 6px;
 }
 
 .key {
@@ -57,8 +69,19 @@ h1 {
   border-radius: 4px;
   cursor: pointer;
   user-select: none;
+  font-size: 14px;
 }
 
 .key.wide {
+  padding: 10px 18px;
+}
+
+button {
   padding: 10px 15px;
+  margin: 10px;
+  background: #538d4e;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
 }
